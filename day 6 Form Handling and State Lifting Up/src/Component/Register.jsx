@@ -2,42 +2,32 @@ import React, { useState } from "react";
 
 const Register = ({ setToggle, setUsers }) => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
+    name: "Cheel",
+    email: "cheel@gmail.com",
+    password: "123123123",
     image: "",
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    let { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setUsers((prev) => [...prev, formData]);
-
     setFormData({
       name: "",
       email: "",
       password: "",
       image: "",
     });
-
-    alert("Registration successful!");
   };
 
   return (
-    <div className="bg-white w-96 p-6 rounded-xl flex flex-col gap-4">
-      <h1 className="text-2xl font-bold">Register</h1>
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        {/* Name */}
+    <div className="bg-white w-90 p-6 rounded-xl flex flex-col gap-4">
+      <h1>Register</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4" action="">
         <input
           value={formData.name}
           required
@@ -47,19 +37,15 @@ const Register = ({ setToggle, setUsers }) => {
           type="text"
           placeholder="Name"
         />
-
-        {/* Email */}
         <input
           value={formData.email}
           required
           name="email"
           onChange={handleChange}
           className="p-2 border border-gray-400 rounded"
-          type="email"
+          type="text"
           placeholder="Email"
         />
-
-        {/* Password */}
         <input
           value={formData.password}
           required
@@ -69,31 +55,22 @@ const Register = ({ setToggle, setUsers }) => {
           type="password"
           placeholder="Password"
         />
-
-        {/* Image */}
         <input
           value={formData.image}
+          required
           name="image"
           onChange={handleChange}
           className="p-2 border border-gray-400 rounded"
           type="url"
-          placeholder="Image URL (optional)"
+          placeholder="image"
         />
-
-        {/* Register Button */}
-        <button
-          type="submit"
-          className="p-2 bg-blue-600 text-white rounded cursor-pointer hover:bg-blue-700"
-        >
-          Register
-        </button>
+        <button className="p-2 bg-blue-600 text-white rounded">Register</button>
       </form>
-
-      <p className="text-sm">
+      <p>
         Already have an Account?{" "}
         <span
           onClick={() => setToggle((prev) => !prev)}
-          className="text-blue-600 cursor-pointer hover:underline"
+          className="text-blue-600 cursor-pointer"
         >
           Login here
         </span>
