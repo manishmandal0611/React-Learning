@@ -32,7 +32,7 @@ const Navbar = () => {
           to={"/main/about"}
         >
           About
-        </NavLink>
+        </NavLink>  
       </div>
 
       <div className="flex items-center gap-6">
